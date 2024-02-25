@@ -121,9 +121,8 @@ const Home = () => {
   return (
     <>
       <div className="todo-container">
-        
+        <ToastContainer position="top-center" /> 
         <div className="todo-app">
-          <ToastContainer position="center" /> 
           <div className="app-title">
             <h2>To-do app</h2>
             <i className="fa-solid fa-book-bookmark"></i>

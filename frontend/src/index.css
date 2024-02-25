@@ -368,11 +368,14 @@ ul li {
   display: flex;
   justify-content: space-between;
 }
-.edit-icon{
+.edit-icon {
   margin-right: 30px;
   color: #00a762;
   font-size: large;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 ul li .check {
   position: absolute;
