@@ -30,4 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/todolist-store', [TodoListController::class, 'store']);
     Route::delete('/todolist-delete/{id}', [TodoListController::class, 'destroy']);
     Route::put('/todolist-update/{id}', [TodoListController::class, 'update']);
+    Route::get('/recently-deleted/{id}', [TodoListController::class, 'recentlyDeleted']);
+    Route::put('/undo-delete/{id}', [TodoListController::class, 'undoDelete']);
+    Route::delete('/permanently-delete/{id}', [TodoListController::class, 'permanentlyDelete']);
 });

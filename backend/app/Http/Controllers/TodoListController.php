@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TodoList;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TodoListController extends Controller
 {
@@ -65,5 +66,58 @@ class TodoListController extends Controller
         $todo = TodoList::find($id);
         $todo->delete();
         return response()->json($todo, 200);
+    }
+
+    public function recentlyDeleted($id)
+    {
+        // Retrieve the recently deleted todos for the specified user
+        $recentlyDeleted = TodoList::onlyTrashed()
+            ->where('user_id', $id)
+            ->latest()
+            ->get();
+
+        // Return the recently deleted todos as a JSON response
+        return response()->json($recentlyDeleted, 200);
+    }
+
+
+    public function undoDelete($id)
+    {
+        try {
+            // Find the recently deleted todo list item by ID
+            $todo = TodoList::withTrashed()->findOrFail($id);
+
+            // Restore the recently deleted todo list item
+            $todo->restore();
+
+            // Return a success message
+            return response()->json(['message' => 'Todo item restored successfully'], 200);
+        } catch (ModelNotFoundException $e) {
+            // Handle the case where the todo item is not found
+            return response()->json(['error' => 'Todo item not found'], 404);
+        } catch (\Exception $e) {
+            // Handle other exceptions
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function permanentlyDelete($id)
+    {
+        try {
+            // Find the todo list item to permanently delete
+            $todo = TodoList::withTrashed()->findOrFail($id);
+
+            // Permanently delete the todo list item
+            $todo->forceDelete();
+
+            // Return a success message
+            return response()->json(['message' => 'Todo item permanently deleted'], 200);
+        } catch (ModelNotFoundException $e) {
+            // Handle the case where the todo item is not found
+            return response()->json(['error' => 'Todo item not found'], 404);
+        } catch (\Exception $e) {
+            // Handle other exceptions
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }
