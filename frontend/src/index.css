@@ -112,13 +112,13 @@ table {
   border-collapse: collapse;
 }
 
-table>thead>tr>th {
+table > thead > tr > th {
   text-align: left;
   padding: 0.5rem 0.5rem;
   background-color: #efefef;
 }
 
-table>tbody>tr>td {
+table > tbody > tr > td {
   padding: 0.5rem 0.5rem;
   border-bottom: 1px solid #efefef;
   white-space: nowrap;
@@ -206,7 +206,7 @@ table>tbody>tr>td {
   padding: 1rem;
 }
 
-#defaultLayout aside>a {
+#defaultLayout aside > a {
   display: block;
   padding: 0.75rem 1rem;
   border-radius: 6px;
@@ -215,7 +215,7 @@ table>tbody>tr>td {
   transition: all 0.2s;
 }
 
-#defaultLayout aside>a:hover {
+#defaultLayout aside > a:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -388,7 +388,7 @@ ul li .check {
   border: 2px solid #ff5945;
   background-color: #fff;
 }
-ul li .check:hover{
+ul li .check:hover {
   background-color: #fff !important;
 }
 
@@ -423,7 +423,6 @@ span:hover {
   color: #fff;
 }
 
-
 .edit-modal {
   position: absolute;
   background: #fff;
@@ -440,23 +439,22 @@ span:hover {
   pointer-events: auto;
   margin-top: 0px;
 }
-.edit-modal input{
+.edit-modal input {
   width: 100%;
   border: 1px solid rebeccapurple;
   border-radius: 10px;
 }
-.edit-button{
+.edit-button {
   background-color: #ff5945 !important;
   color: #fff !important;
   margin-left: 20px;
 }
-.dropdown-btn{
+.dropdown-btn {
   background-color: #5b08a7 !important;
   display: flex !important;
   align-items: center;
   justify-content: center;
 }
-
 
 .loader {
   height: 25px;
@@ -483,12 +481,33 @@ span:hover {
   width: 500px;
   top: 400px;
 }
-.delete-modal p{
+.delete-modal p {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.delete-modal a{
+.delete-modal a {
   width: 55%;
+}
+
+/* ChangePassword.css */
+
+.password-input {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.toggle-password:focus {
+  outline: none;
 }

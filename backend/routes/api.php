@@ -26,6 +26,8 @@ Route::post('/login', [UserController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [UserController::class, 'logout']);
+    Route::get('/loggeduser', [UserController::class, 'loggedInUser']);
+    Route::post('/change-password', [UserController::class, 'changePassword']);
     Route::get('/todolist/{id}', [TodoListController::class, 'index']);
     Route::post('/todolist-store', [TodoListController::class, 'store']);
     Route::delete('/todolist-delete/{id}', [TodoListController::class, 'destroy']);

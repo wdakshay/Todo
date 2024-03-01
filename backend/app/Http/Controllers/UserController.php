@@ -48,4 +48,31 @@ class UserController extends Controller
             'message' => 'Logged out'
         ];
     }
+
+    public function loggedInUser()
+    {
+        $loggedUser = auth()->user();
+
+         return response([
+             'data' => $loggedUser,
+             'message' => "logged user data",
+             "status" => "success"
+         ], 200);
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'currentPassword' => 'required',
+            'newPassword' => 'required|confirmed|min:6',
+        ]);
+        $user = auth()->user();
+        if (!Hash::check($request->currentPassword, $user->password)) {
+            return response()->json(['message' => 'The provided password is incorrect'], 401);
+        }
+        $user->update([
+            'password' => bcrypt($request->newPassword),
+        ]);
+        return response()->json(['message' => 'Password changed successfully'], 200);
+    }
 }

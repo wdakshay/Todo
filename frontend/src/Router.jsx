@@ -5,6 +5,7 @@ import NotFound from "./views/NotFound";
 import DefaultLayout from "./components/DefaultLayout";
 import GuestLayout from "./components/GuestLayout";
 import Home from "./views/Home";
+import ChangePassword from "./views/ChangePassword";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/change-password",
+        element: <ChangePassword />,
       },
     ],
   },
